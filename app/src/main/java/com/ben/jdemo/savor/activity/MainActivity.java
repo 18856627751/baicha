@@ -37,6 +37,11 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    protected void initDeal() {
+
+    }
+
+    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(requestCode== Parameter.permissionRequestCode){

@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -28,7 +27,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         styleSetting();
 
         initial();
-
+        initDeal();
 
     }
 
@@ -38,8 +37,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void initial();
 
+    protected abstract void initDeal();
+
     //状态栏的样式
-    public void styleSetting(){
+    private void styleSetting(){
         if(getStatusBarStyle()== StatusBar.HIDE){
             if(Build.VERSION.SDK_INT >= 21){
                 View viewDoctor = getWindow().getDecorView();
@@ -51,10 +52,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                 getWindow().setStatusBarColor(Color.TRANSPARENT);
                 getWindow().setNavigationBarColor(Color.TRANSPARENT);
             }
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN); // 隐藏状态栏
             ActionBar actionBar = getSupportActionBar();
-            if(null!=actionBar){
-                actionBar.hide();
-            }
+            actionBar.hide();
         }else if(getStatusBarStyle()==StatusBar.TRANSPARENT) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 Window window = getWindow();

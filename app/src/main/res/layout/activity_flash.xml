@@ -3,18 +3,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     tools:context=".activity.FlashActivity">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guide_lh7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guide_lh8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guide_lv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.03"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guide_lv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.07"/>
 
     <ImageView
         android:id="@+id/iv_splash"
+        android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <LinearLayout
+        android:id="@+id/ll_time_count"
+        app:layout_constraintTop_toBottomOf="@id/guide_lv1"
+        app:layout_constraintEnd_toStartOf="@id/guide_lh8"
+        app:layout_constraintStart_toEndOf="@id/guide_lh7"
+        app:layout_constraintBottom_toTopOf="@id/guide_lv2"
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:background="@drawable/shape_splash_time"
+        android:layout_width="0dp"
+        android:layout_height="0dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
