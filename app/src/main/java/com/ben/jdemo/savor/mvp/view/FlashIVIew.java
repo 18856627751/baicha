@@ -7,5 +7,5 @@ package com.ben.jdemo.savor.mvp.view;
  */
 public interface FlashIVIew {
     void startTime();
-    void finshTime();
+    void finishTime();
 }

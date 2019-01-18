@@ -3,7 +3,6 @@ package com.ben.jdemo.savor.activity;
 
 
 import android.support.annotation.NonNull;
-
 import com.ben.jdemo.savor.R;
 import com.ben.jdemo.savor.base.BaseActivity;
 import com.ben.jdemo.savor.constant.Parameter;
