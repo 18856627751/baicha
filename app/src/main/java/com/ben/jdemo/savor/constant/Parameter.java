@@ -9,4 +9,13 @@ public class Parameter {
 
     //申请权限返回码
     public static final int permissionRequestCode=10001;
+
+    //所有错误的返回码
+    public static final String ERROR="error";
+
+    //login pass AES
+    public static final String AES= "';lk][po$%^&*()_";
+
+    //login info key
+    public static final String LOGINKEY="<>?,./{}|[]~~`";
 }

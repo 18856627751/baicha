@@ -1,6 +1,8 @@
 package com.ben.jdemo.savor.base;
 
 import android.app.Application;
+import android.content.Context;
+
 import com.ben.jdemo.savor.util.TLog;
 
 /**
@@ -15,4 +17,6 @@ public class BaiChaApplication extends Application{
         //初始化打印日志
         TLog.init();
     }
+
+    public static Context getContext(){return getContext();}
 }

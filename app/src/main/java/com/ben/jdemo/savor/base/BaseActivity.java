@@ -7,11 +7,15 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.ben.jdemo.savor.util.TLog;
 import com.ben.jdemo.savor.util.enumstyle.StatusBar;
+
+import java.util.Objects;
 
 /**
  * @author： BaiCha
@@ -22,9 +26,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
-
         styleSetting();
+        setContentView(getLayoutId());
 
         initial();
         initDeal();
@@ -57,18 +60,17 @@ public abstract class BaseActivity extends AppCompatActivity {
             ActionBar actionBar = getSupportActionBar();
             actionBar.hide();
         }else if(getStatusBarStyle()==StatusBar.TRANSPARENT) {
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                int flagTranslucentNavigation = WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION;
                 Window window = getWindow();
-                View decorView = window.getDecorView();
-                int option = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-                decorView.setSystemUiVisibility(option);
-                int finalColor = Color.TRANSPARENT ;
-                window.setNavigationBarColor(finalColor);
-                window.setStatusBarColor(finalColor);
+                WindowManager.LayoutParams attributes = window.getAttributes();
+                attributes.flags |= flagTranslucentNavigation;
+                window.setAttributes(attributes);
+                getWindow().setStatusBarColor(Color.TRANSPARENT);
 
             }
+
 
         }
     }
