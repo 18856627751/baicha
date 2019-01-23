@@ -23,7 +23,13 @@ public class TLog {
     public static void d(String tag, String[] str){
         if(str==null){return;}
         if(str.length==0){return;}
-        XLog.d(tag,str);
+        StringBuilder builder=new StringBuilder();
+        builder.append("array:{");
+        for (int i = 0; i < str.length; i++) {
+            builder.append("[").append(i).append("]").append(str[i]);
+        }
+        builder.append("}");
+        XLog.d(tag,builder.toString());
     }
 
     public static void i(String tag,String msg){
@@ -33,7 +39,13 @@ public class TLog {
     public static void i(String tag, String[] str){
         if(str==null){return;}
         if(str.length==0){return;}
-        XLog.i(tag,str);
+        StringBuilder builder=new StringBuilder();
+        builder.append("array:{");
+        for (int i = 0; i < str.length; i++) {
+            builder.append("[").append(i).append("]").append(str[i]);
+        }
+        builder.append("}");
+        XLog.d(tag,builder.toString());
     }
 
     public static void w(String tag,String msg){
@@ -43,7 +55,13 @@ public class TLog {
     public static void w(String tag, String[] str){
         if(str==null){return;}
         if(str.length==0){return;}
-        XLog.w(tag,str);
+        StringBuilder builder=new StringBuilder();
+        builder.append("array:{");
+        for (int i = 0; i < str.length; i++) {
+            builder.append("[").append(i).append("]").append(str[i]);
+        }
+        builder.append("}");
+        XLog.d(tag,builder.toString());
     }
 
     public static void e(String tag,String msg){
@@ -53,6 +71,12 @@ public class TLog {
     public static void e(String tag, String[] str){
         if(str==null){return;}
         if(str.length==0){return;}
-        XLog.e(tag,str);
+        StringBuilder builder=new StringBuilder();
+        builder.append("array:{");
+        for (int i = 0; i < str.length; i++) {
+            builder.append("[").append(i).append("]").append(str[i]);
+        }
+        builder.append("}");
+        XLog.d(tag,builder.toString());
     }
 }

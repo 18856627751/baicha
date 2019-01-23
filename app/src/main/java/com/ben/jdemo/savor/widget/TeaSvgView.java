@@ -12,15 +12,11 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
-import android.support.v4.view.animation.FastOutLinearInInterpolator;
-import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
 
 import com.ben.jdemo.savor.R;
-import com.ben.jdemo.savor.util.InterfaceUtil.TeaLogListener;
-import com.ben.jdemo.savor.util.TLog;
+import com.ben.jdemo.savor.util.Interfaces.TeaLogListener;
 
 /**
  * @author： BaiCha

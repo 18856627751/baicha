@@ -1,19 +1,16 @@
 package com.ben.jdemo.savor.activity;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ben.jdemo.savor.R;
 import com.ben.jdemo.savor.base.BaseActivity;
 import com.ben.jdemo.savor.mvp.view.FlashIVIew;
 import com.ben.jdemo.savor.util.GlideUtil;
-import com.ben.jdemo.savor.util.InterfaceUtil.TeaLogListener;
+import com.ben.jdemo.savor.util.Interfaces.TeaLogListener;
 import com.ben.jdemo.savor.util.TLog;
 import com.ben.jdemo.savor.util.enumstyle.StatusBar;
 import com.ben.jdemo.savor.widget.TeaSvgView;
