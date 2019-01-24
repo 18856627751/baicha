@@ -36,6 +36,8 @@ public class RegisterProgress extends View {
     private Paint paintText;
     private float progress=1; //进度最大为150 (默认15一个单位)
     private RegisterViewFinish listener;
+    private ValueAnimator valueAnimator;
+    private boolean destory=false;
 
 
     public RegisterProgress(Context context) {
@@ -83,6 +85,7 @@ public class RegisterProgress extends View {
         int width = MeasureSpec.getSize(widthMeasureSpec);
         int height = MeasureSpec.getSize(heightMeasureSpec);
         max=Math.min(width,height);
+        setMeasuredDimension(max,max);
     }
 
     @SuppressLint("DrawAllocation")
@@ -90,7 +93,7 @@ public class RegisterProgress extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-
+        if(destory){return;}
         //corner
         setCornerDraw(canvas);
         //progress
@@ -141,7 +144,7 @@ public class RegisterProgress extends View {
         canvas.drawArc(rectFBorder,275,155,false,paintBorder);
 
         //填充
-        paintBorder.setStrokeWidth((float) (max/24.5));
+        paintBorder.setStrokeWidth((float) (max/25));
         paintBorder.setColor(Color.WHITE);
         RectF rectF = new RectF(0.1f * max, 0.1f * max, 0.9f * max, 0.9f * max);
         canvas.drawArc(rectF,110,155,false,paintBorder);
@@ -196,7 +199,12 @@ public class RegisterProgress extends View {
         if(pro>10||pro<0){
             return;
         }
-        ValueAnimator valueAnimator=ValueAnimator.ofFloat(progress,pro);
+        if(valueAnimator!=null){
+            valueAnimator.cancel();
+            valueAnimator.removeAllUpdateListeners();
+        }
+
+        valueAnimator = ValueAnimator.ofFloat(progress,pro);
         valueAnimator.setInterpolator(new OvershootInterpolator());
         valueAnimator.setDuration(1500);
         valueAnimator.setRepeatCount(0);
@@ -233,6 +241,16 @@ public class RegisterProgress extends View {
             }
         });
         valueAnimator.start();
+
+    }
+
+    public void onDestory(){
+        destory = true;
+        if(valueAnimator!=null){
+            valueAnimator.cancel();
+            valueAnimator.removeAllUpdateListeners();
+            valueAnimator=null;
+        }
 
     }
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <!-- 可清空编辑框属性 -->
+    <declare-styleable name="EditDelete">
+        <attr name="delSre" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="DottedLine">
+        <attr name="dotColor" format="color" />
+    </declare-styleable>
+</resources>

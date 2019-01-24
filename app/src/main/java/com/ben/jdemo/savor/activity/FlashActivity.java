@@ -5,20 +5,19 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.ben.jdemo.savor.R;
 import com.ben.jdemo.savor.base.BaseActivity;
-import com.ben.jdemo.savor.mvp.view.FlashIVIew;
+import com.ben.jdemo.savor.constant.Parameter;
+import com.ben.jdemo.savor.db.SpUtil;
 import com.ben.jdemo.savor.util.GlideUtil;
 import com.ben.jdemo.savor.util.Interfaces.TeaLogListener;
 import com.ben.jdemo.savor.util.TLog;
 import com.ben.jdemo.savor.util.enumstyle.StatusBar;
 import com.ben.jdemo.savor.widget.TeaSvgView;
 
-public class FlashActivity extends BaseActivity implements FlashIVIew ,View.OnClickListener,TeaLogListener{
+public class FlashActivity extends BaseActivity implements View.OnClickListener,TeaLogListener{
 
 
-    private int TimeCount=5;
     private ImageView bgFlash;
     private RelativeLayout linearLayout;
     private TeaSvgView teaLog;
@@ -50,15 +49,7 @@ public class FlashActivity extends BaseActivity implements FlashIVIew ,View.OnCl
 
     }
 
-    @Override
-    public void startTime() {
 
-    }
-
-    @Override
-    public void finishTime() {
-
-    }
 
     @Override
     protected void onDestroy() {
@@ -78,7 +69,7 @@ public class FlashActivity extends BaseActivity implements FlashIVIew ,View.OnCl
 
     @Override
     public void animProgress(boolean isFinish, float time) {
-
+        final String info = SpUtil.getInstance().getStringInfo(Parameter.LOGINKEY);
         if(time<1){
            new Thread(new Runnable() {
                @Override
@@ -88,7 +79,12 @@ public class FlashActivity extends BaseActivity implements FlashIVIew ,View.OnCl
                    } catch (InterruptedException e) {
                        TLog.e("FlashActivity","InterruptedException:"+e.getMessage());
                    }
-                   startActivity(new Intent(FlashActivity.this,LoginActivity.class));
+                   if(!info.equals(Parameter.ERROR)){
+                       startActivity(new Intent(FlashActivity.this,LoginActivity.class));
+                   }else{
+                       startActivity(new Intent(FlashActivity.this,RegisterActivity.class));
+                   }
+
                    finish();
                }
            }).start();

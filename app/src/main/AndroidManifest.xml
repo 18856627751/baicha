@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/app_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.TestActivity">
+        <activity android:name=".activity.RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,8 +21,10 @@
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.FlashActivity"/>
+
+
+        <activity android:name=".activity.TestActivity"/>
     </application>
 
 </manifest>

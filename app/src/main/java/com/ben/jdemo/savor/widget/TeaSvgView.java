@@ -13,6 +13,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.ben.jdemo.savor.R;
@@ -22,6 +23,7 @@ import com.ben.jdemo.savor.util.Interfaces.TeaLogListener;
  * @author： BaiCha
  * @Time:2019/1/17
  * @description :tea图标的动效设计
+ * width:263
  */
 public class TeaSvgView extends View {
 
@@ -53,7 +55,7 @@ public class TeaSvgView extends View {
         paintArc.setColor(Color.WHITE);
         paintArc.setAlpha(255);
         paintArc.setTextAlign(Paint.Align.CENTER);
-        paintArc.setTextSize(45);
+
         drawArcShow();
     }
 
@@ -125,6 +127,10 @@ public class TeaSvgView extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         width = MeasureSpec.getSize(widthMeasureSpec);
         height = MeasureSpec.getSize(heightMeasureSpec);
+        int max=Math.min(width,height);
+        width=max;
+        height=max;
+        setMeasuredDimension(max,max);
     }
 
 
@@ -136,6 +142,7 @@ public class TeaSvgView extends View {
             return;
         }
         path.reset();
+        paintArc.setTextSize(width/6);
         paintArc.setAlpha(255);
         paintArc.setStrokeWidth(percent * 20);
         canvas.drawArc(new RectF(width * 0.1f, width * 0.1f, height * 0.9f, height * 0.9f), -260 - 40 * percent, -90 - 220 * percent, false, paintArc);
@@ -147,7 +154,7 @@ public class TeaSvgView extends View {
         canvas.drawBitmap(bitmap, new Rect(0, 0, width, height), new RectF(width / 5, height / 5, width / 5 * 4, height / 5 * 4), paintArc);
 
         paintArc.setAlpha((int) ((0.2f + percent) * 255));
-        paintArc.setStrokeWidth(4);
+        paintArc.setStrokeWidth(width/66);
         canvas.drawTextOnPath("baicha", path, 0.005f * width, 0.05f * height, paintArc);
 
         canvas.restore();
