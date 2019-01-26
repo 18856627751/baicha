@@ -7,6 +7,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -17,40 +18,41 @@ import android.widget.EditText;
 import com.ben.jdemo.savor.R;
 
 /**
- * @author： BaiCha
- * @Time:2019/1/24
- * @description :
+ * @author: BaiCha
+ * @Time: ---2019/1/27---
+ * @description: na=
  */
-public class AccountEditText extends android.support.v7.widget.AppCompatEditText implements View.OnFocusChangeListener {
+@SuppressLint("AppCompatCustomView")
+public class PassEditText extends android.support.v7.widget.AppCompatEditText implements View.OnFocusChangeListener{
+
 
     private Drawable drawable;
     private Context context;
-    private EditText edit;
-    private boolean focused = false;
+    private boolean isVisibility = false;
 
-    public AccountEditText(Context context) {
-        this(context, null);
+    public PassEditText(Context context) {
+        this(context,null);
     }
 
-    public AccountEditText(Context context, AttributeSet attrs) {
+    public PassEditText(Context context, AttributeSet attrs) {
         this(context,attrs, android.R.attr.editTextStyle);
     }
 
-    @SuppressLint("CustomViewStyleable")
-    public AccountEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+    public PassEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.context = context;
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.EditDelete);
-        drawable = typedArray.getDrawable(R.styleable.EditDelete_delSre);
+        @SuppressLint("CustomViewStyleable") TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.EditPassLook);
+        drawable = typedArray.getDrawable(R.styleable.EditPassLook_LookSre);
         typedArray.recycle();
         initDeal();
     }
 
+
     private void initDeal() {
         if (drawable == null) {
-            drawable = ContextCompat.getDrawable(context, R.mipmap.delete);
-
+            setDrawable();
         }
+
         setOnFocusChangeListener(this);
         addTextChangedListener(new TextWatcher() {
             @Override
@@ -65,18 +67,33 @@ public class AccountEditText extends android.support.v7.widget.AppCompatEditText
 
             @Override
             public void afterTextChanged(Editable editable) {
-                setDrawable();
+                if (length() <= 0) {
+                    setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+                } else {
+                    drawable.setBounds(0, 0, Dp2Px(15), Dp2Px(15));
+                    setCompoundDrawables(null, null, drawable, null);
+                }
+
             }
         });
     }
 
     private void setDrawable() {
-        if (length() <= 0 || !focused) {
+        if(!isVisibility){
+            drawable = ContextCompat.getDrawable(context, R.mipmap.close_eye);
+            setInputType(InputType.TYPE_CLASS_TEXT |InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        }else{
+            drawable = ContextCompat.getDrawable(context, R.mipmap.open_eye);
+            setInputType(InputType.TYPE_CLASS_TEXT);
+        }
+        if (length() <= 0) {
             setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
         } else {
             drawable.setBounds(0, 0, Dp2Px(15), Dp2Px(15));
             setCompoundDrawables(null, null, drawable, null);
         }
+
+        this.isVisibility=!isVisibility;
     }
 
     @Override
@@ -86,24 +103,12 @@ public class AccountEditText extends android.support.v7.widget.AppCompatEditText
 
     @Override
     public void onFocusChange(View view, boolean b) {
-        this.focused = b;
-        if (focused && length() > 0) {
-            setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
-        } else {
-            setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-        }
-
     }
 
     @Override
     protected void onFocusChanged(boolean focused, int direction, Rect previouslyFocusedRect) {
         super.onFocusChanged(focused, direction, previouslyFocusedRect);
-        this.focused = focused;
-        if (focused && length() > 0) {
-            setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
-        } else {
-            setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-        }
+
     }
 
     private int Dp2Px(float value) {
@@ -128,17 +133,13 @@ public class AccountEditText extends android.support.v7.widget.AppCompatEditText
             //触摸点的纵坐标在distance到（distance+图标自身的高度）之内，则视为点中删除图标
             boolean isInnerHeight = (y > distance) && (y < (distance + height));
             if (isInnerWidth && isInnerHeight) {
-                setText("");
-                if (edit != null)
-                    edit.setText("");
+                setDrawable();
+                setSelection(length());
             }
         }
 
         return super.onTouchEvent(event);
     }
 
-    public void setTmpEditText(EditText editText) {
-        this.edit = editText;
-    }
 
 }

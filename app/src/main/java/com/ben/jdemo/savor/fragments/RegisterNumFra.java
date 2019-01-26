@@ -7,8 +7,8 @@ import com.ben.jdemo.savor.base.BaseFragemnt;
 import com.ben.jdemo.savor.mvp.view.RegisterNumView;
 
 /**
- * @author： BaiCha
- * @Time:2019/1/24
+ * @author:  BaiCha
+ * @Time: 2019/1/24
  * @description :
  */
 public class RegisterNumFra extends BaseFragemnt implements RegisterNumView {
@@ -26,7 +26,6 @@ public class RegisterNumFra extends BaseFragemnt implements RegisterNumView {
     public void showProgress() {
 
     }
-
     @Override
     public void hideProgress() {
 

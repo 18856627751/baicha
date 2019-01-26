@@ -8,4 +8,8 @@
     <declare-styleable name="DottedLine">
         <attr name="dotColor" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="EditPassLook">
+        <attr name="LookSre" format="reference" />
+    </declare-styleable>
 </resources>
