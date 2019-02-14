@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
+
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.core.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -21,7 +23,7 @@ import com.ben.jdemo.savor.R;
  * @Time:2019/1/24
  * @description :
  */
-public class AccountEditText extends android.support.v7.widget.AppCompatEditText implements View.OnFocusChangeListener {
+public class AccountEditText extends AppCompatEditText implements View.OnFocusChangeListener {
 
     private Drawable drawable;
     private Context context;

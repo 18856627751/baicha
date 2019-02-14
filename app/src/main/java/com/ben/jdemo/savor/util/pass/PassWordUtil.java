@@ -1,17 +1,11 @@
 package com.ben.jdemo.savor.util.pass;
 
-import android.os.Build;
 import android.util.Base64;
-
 import com.ben.jdemo.savor.constant.Parameter;
 import com.ben.jdemo.savor.util.TLog;
-
 import java.security.Key;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 import javax.crypto.Cipher;
-import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 

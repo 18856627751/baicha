@@ -12,12 +12,13 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import com.ben.jdemo.savor.R;
 import com.ben.jdemo.savor.util.Interfaces.RegisterViewFinish;
+
+import androidx.annotation.Nullable;
 
 /**
  * @author： BaiCha
@@ -144,7 +145,7 @@ public class RegisterProgress extends View {
         canvas.drawArc(rectFBorder,275,155,false,paintBorder);
 
         //填充
-        paintBorder.setStrokeWidth((float) (max/25));
+        paintBorder.setStrokeWidth((float) (max/26));
         paintBorder.setColor(Color.WHITE);
         RectF rectF = new RectF(0.1f * max, 0.1f * max, 0.9f * max, 0.9f * max);
         canvas.drawArc(rectF,110,155,false,paintBorder);
@@ -226,7 +227,7 @@ public class RegisterProgress extends View {
             @Override
             public void onAnimationEnd(Animator animator) {
                 if(progress==10&&listener!=null){
-                    listener.finish();
+                    listener.finishView();
                 }
             }
 

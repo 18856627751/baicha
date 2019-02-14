@@ -1,9 +1,9 @@
 package com.ben.jdemo.savor.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.ben.jdemo.savor.R;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class TestActivity extends AppCompatActivity {
 

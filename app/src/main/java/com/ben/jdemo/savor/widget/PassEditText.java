@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
+
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.core.content.ContextCompat;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -13,7 +15,6 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
 
 import com.ben.jdemo.savor.R;
 
@@ -23,7 +24,7 @@ import com.ben.jdemo.savor.R;
  * @description: na=
  */
 @SuppressLint("AppCompatCustomView")
-public class PassEditText extends android.support.v7.widget.AppCompatEditText implements View.OnFocusChangeListener{
+public class PassEditText extends AppCompatEditText implements View.OnFocusChangeListener{
 
 
     private Drawable drawable;

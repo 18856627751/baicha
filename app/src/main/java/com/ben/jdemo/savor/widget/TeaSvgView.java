@@ -11,13 +11,13 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import com.ben.jdemo.savor.R;
 import com.ben.jdemo.savor.util.Interfaces.TeaLogListener;
+
+import androidx.annotation.Nullable;
 
 /**
  * @author： BaiCha
@@ -156,8 +156,6 @@ public class TeaSvgView extends View {
         paintArc.setAlpha((int) ((0.2f + percent) * 255));
         paintArc.setStrokeWidth(width/66);
         canvas.drawTextOnPath("baicha", path, 0.005f * width, 0.05f * height, paintArc);
-
-        canvas.restore();
 
     }
 

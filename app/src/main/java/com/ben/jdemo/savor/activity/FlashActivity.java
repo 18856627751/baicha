@@ -3,6 +3,7 @@ package com.ben.jdemo.savor.activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.ben.jdemo.savor.R;
@@ -35,10 +36,10 @@ public class FlashActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     protected void initial() {
-        bgFlash = findViewById(R.id.iv_splash);
-        linearLayout = findViewById(R.id.ll_time_count);
-        teaLog = findViewById(R.id.v_tea_log);
-        tvTime = findViewById(R.id.tv_time_flash);
+        bgFlash = (ImageView) findViewById(R.id.iv_splash);
+        linearLayout =(RelativeLayout) findViewById(R.id.ll_time_count);
+        teaLog = (TeaSvgView)findViewById(R.id.v_tea_log);
+        tvTime = (TextView) findViewById(R.id.tv_time_flash);
     }
 
     @Override

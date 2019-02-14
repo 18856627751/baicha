@@ -1,6 +1,7 @@
 package com.ben.jdemo.savor.util.enumstyle;
 
-import android.support.annotation.ColorInt;
+
+import androidx.annotation.ColorInt;
 
 /**
  * @author： BaiCha
@@ -17,7 +18,7 @@ public enum StatusBar {
     private int alpha;
 
     StatusBar(){}
-    StatusBar(@ColorInt int color,int alpha){
+    StatusBar(@ColorInt int color, int alpha){
         this.color=color;
         this.alpha=alpha;
     }

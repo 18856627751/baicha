@@ -2,12 +2,13 @@ package com.ben.jdemo.savor.activity;
 
 
 
-import android.support.annotation.NonNull;
 import com.ben.jdemo.savor.R;
 import com.ben.jdemo.savor.base.BaseActivity;
 import com.ben.jdemo.savor.constant.Parameter;
 import com.ben.jdemo.savor.util.PermissionUtil;
 import com.ben.jdemo.savor.util.enumstyle.StatusBar;
+
+import androidx.annotation.NonNull;
 
 public class MainActivity extends BaseActivity {
 

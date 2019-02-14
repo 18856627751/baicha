@@ -6,5 +6,5 @@ package com.ben.jdemo.savor.util.Interfaces;
  * @description :注册界面注册完成的回调监听
  */
 public interface RegisterViewFinish {
-    void finish();
+    void finishView();
 }

@@ -3,19 +3,16 @@ package com.ben.jdemo.savor.base;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-
-import com.ben.jdemo.savor.util.TLog;
 import com.ben.jdemo.savor.util.enumstyle.StatusBar;
+import androidx.annotation.ColorInt;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Objects;
+import static android.view.View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
 
 /**
  * @author： BaiCha
@@ -42,14 +39,17 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void initDeal();
 
+
     //状态栏的样式
     private void styleSetting(){
         if(getStatusBarStyle()== StatusBar.HIDE){
             if(Build.VERSION.SDK_INT >= 21){
                 View viewDoctor = getWindow().getDecorView();
                 int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|
-                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|
-                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+                        SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
                 viewDoctor.setSystemUiVisibility(option);
                 //设置状态栏和导航栏颜色为透明
                 getWindow().setStatusBarColor(Color.TRANSPARENT);

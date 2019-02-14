@@ -3,7 +3,7 @@ package com.ben.jdemo.savor.fragments;
 import android.view.View;
 
 import com.ben.jdemo.savor.R;
-import com.ben.jdemo.savor.base.BaseFragemnt;
+import com.ben.jdemo.savor.base.BaseFragment;
 import com.ben.jdemo.savor.mvp.view.RegisterNumView;
 
 /**
@@ -11,7 +11,7 @@ import com.ben.jdemo.savor.mvp.view.RegisterNumView;
  * @Time: 2019/1/24
  * @description :
  */
-public class RegisterNumFra extends BaseFragemnt implements RegisterNumView {
+public class RegisterNumFra extends BaseFragment implements RegisterNumView {
     @Override
     protected void init(View view) {
 
