@@ -31,18 +31,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <FrameLayout
+            android:id="@+id/fra_register_content"
+            android:layout_margin="70dp"
+            android:translationZ="20dp"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
         <com.ben.jdemo.savor.widget.RegisterProgress
             android:id="@+id/rp_progress_tea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <FrameLayout
-            android:id="@+id/fra_register"
-            android:layout_margin="70dp"
-            android:translationZ="20dp"
-            android:layout_centerInParent="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+
         <Button
             android:id="@+id/bt_next_step"
             android:layout_centerHorizontal="true"

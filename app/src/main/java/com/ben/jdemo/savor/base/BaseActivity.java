@@ -11,6 +11,8 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import static android.view.View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
 import static android.view.View.SYSTEM_UI_FLAG_IMMERSIVE;
@@ -103,6 +105,21 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
+    protected void addFragment(int containerViewId, Fragment fragment, String tag) {
+        try {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            if (!fragment.isAdded()) {
+                // 隐藏当前的fragment，add下一个到Activity中
+                ft.add(containerViewId, fragment, tag);
+            } else {
+                // 隐藏当前的fragment，显示下一个
+                ft.show(fragment);
+            }
+            ft.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+    }
 
 }

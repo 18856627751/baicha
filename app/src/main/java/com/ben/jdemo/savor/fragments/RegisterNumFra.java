@@ -18,6 +18,11 @@ public class RegisterNumFra extends BaseFragment implements RegisterNumView {
     }
 
     @Override
+    protected void initData() {
+
+    }
+
+    @Override
     protected int getLayoutId() {
         return R.layout.fra_register_number;
     }
@@ -45,4 +50,6 @@ public class RegisterNumFra extends BaseFragment implements RegisterNumView {
     public void navigateToHome() {
 
     }
+
+
 }
