@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">白茶</string>
     <string name="next_step">下一步</string>
+    <string name="register">注 册</string>
 </resources>

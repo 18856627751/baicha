@@ -101,21 +101,18 @@ public class TeaSvgView extends View {
         valueAnimator = ValueAnimator.ofFloat(percent, 0.8f);
         valueAnimator.setRepeatCount(0);
         valueAnimator.setDuration(500);
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                percent = (float) valueAnimator.getAnimatedValue();
-                invalidate();
-                if (percent == 0.8f) {
-                    listener.animProgress(true, 0);
-                } else {
-                    if (listener != null) {
-                        if (time != 6 - (int) (percent / 0.8 * 6)) {
-                            time = 6 - (int) (percent / 0.8 * 6);
-                            listener.animProgress(false, (float) time);
-                        }
-
+        valueAnimator.addUpdateListener(valueAnimator -> {
+            percent = (float) valueAnimator.getAnimatedValue();
+            invalidate();
+            if (percent == 0.8f) {
+                listener.animProgress(true, 0);
+            } else {
+                if (listener != null) {
+                    if (time != 6 - (int) (percent / 0.8 * 6)) {
+                        time = 6 - (int) (percent / 0.8 * 6);
+                        listener.animProgress(false, (float) time);
                     }
+
                 }
             }
         });
