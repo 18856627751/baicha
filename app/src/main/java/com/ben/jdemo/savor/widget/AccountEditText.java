@@ -8,6 +8,9 @@ import android.graphics.drawable.Drawable;
 
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.core.content.ContextCompat;
+
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -44,6 +47,7 @@ public class AccountEditText extends AppCompatEditText implements View.OnFocusCh
         this.context = context;
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.EditDelete);
         drawable = typedArray.getDrawable(R.styleable.EditDelete_delSre);
+        setOnFocusChangeListener(this);
         typedArray.recycle();
         initDeal();
     }
@@ -73,7 +77,7 @@ public class AccountEditText extends AppCompatEditText implements View.OnFocusCh
     }
 
     private void setDrawable() {
-        if (length() <= 0 || !focused) {
+        if (length() <= 0 ) {
             setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
         } else {
             drawable.setBounds(0, 0, Dp2Px(15), Dp2Px(15));
@@ -89,11 +93,12 @@ public class AccountEditText extends AppCompatEditText implements View.OnFocusCh
     @Override
     public void onFocusChange(View view, boolean b) {
         this.focused = b;
-        if (focused && length() > 0) {
-            setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
-        } else {
-            setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-        }
+//        if (focused && length() > 0) {
+//            drawable.setBounds(0, 0, Dp2Px(15), Dp2Px(15));
+//            setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
+//        } else {
+//            setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+//        }
 
     }
 
@@ -101,11 +106,12 @@ public class AccountEditText extends AppCompatEditText implements View.OnFocusCh
     protected void onFocusChanged(boolean focused, int direction, Rect previouslyFocusedRect) {
         super.onFocusChanged(focused, direction, previouslyFocusedRect);
         this.focused = focused;
-        if (focused && length() > 0) {
-            setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
-        } else {
-            setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-        }
+//        if (focused && length() > 0) {
+//            drawable.setBounds(0, 0, Dp2Px(15), Dp2Px(15));
+//            setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
+//        } else {
+//            setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+//        }
     }
 
     private int Dp2Px(float value) {

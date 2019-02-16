@@ -33,11 +33,11 @@
 
         <FrameLayout
             android:id="@+id/fra_register_content"
-            android:layout_margin="70dp"
+            android:layout_margin="65dp"
             android:translationZ="20dp"
             android:layout_centerInParent="true"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="wrap_content"/>
 
         <com.ben.jdemo.savor.widget.RegisterProgress
             android:id="@+id/rp_progress_tea"

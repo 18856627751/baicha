@@ -25,7 +25,7 @@ public class LoginInfoBean {
         this.list = list;
     }
 
-    static class DataBean{
+    public static class DataBean{
         public String getAcount() {
             return account;
         }

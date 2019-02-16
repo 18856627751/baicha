@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
+    aaptOptions.cruncherEnabled = false
     defaultConfig {
         applicationId "com.ben.jdemo.savor"
         minSdkVersion 21
@@ -42,6 +43,7 @@ dependencies {
     implementation project(':opencv')
     implementation 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    implementation 'org.greenrobot:eventbus:3.1.1'
 }
 
 task nativeLibsToJar(type: Jar, description: 'create a jar archive of the native libs') {

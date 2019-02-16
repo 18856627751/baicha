@@ -85,7 +85,7 @@ public class PassEditText extends AppCompatEditText implements View.OnFocusChang
             setInputType(InputType.TYPE_CLASS_TEXT |InputType.TYPE_TEXT_VARIATION_PASSWORD);
         }else{
             drawable = ContextCompat.getDrawable(context, R.mipmap.open_eye);
-            setInputType(InputType.TYPE_CLASS_TEXT);
+            setInputType(InputType.TYPE_CLASS_TEXT |InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD );
         }
         if (length() <= 0) {
             setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);

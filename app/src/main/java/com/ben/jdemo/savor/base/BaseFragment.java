@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 /**
  * @author： BaiCha
- * @Time:2019/1/24
+ * @Time: 2019/1/24
  * @description :
  */
 public abstract class BaseFragment extends Fragment {

@@ -3,8 +3,80 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/corner_border">
+    android:orientation="vertical">
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/edit_corner_border">
 
+        <ImageView
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="4dp"
+            android:background="@mipmap/edit_account"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+
+        <View
+            android:layout_marginTop="10dp"
+            android:background="#7dc5eb"
+            android:layout_marginBottom="10dp"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"/>
+
+        <com.ben.jdemo.savor.widget.AccountEditText
+            android:id="@+id/register_account"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="2dp"
+            android:textSize="12sp"
+            android:layout_marginBottom="2dp"
+            android:maxLength="16"
+            android:maxLines="1"
+            android:background="@color/white"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/edit_corner_border">
+
+        <ImageView
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="8dp"
+            android:background="@mipmap/edit_pass"
+            android:layout_width="28dp"
+            android:layout_height="28dp" />
+
+        <View
+            android:layout_marginTop="10dp"
+            android:background="#7dc5eb"
+            android:layout_marginBottom="10dp"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"/>
+
+        <com.ben.jdemo.savor.widget.PassEditText
+            android:id="@+id/register_pass"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:textSize="12sp"
+            android:maxLength="16"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:maxLines="1"
+            android:background="@color/white"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
 </LinearLayout>
