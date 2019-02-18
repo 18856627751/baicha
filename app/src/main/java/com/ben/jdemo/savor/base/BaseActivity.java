@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import static android.view.View.SYSTEM_UI_FLAG_IMMERSIVE;
 
@@ -103,7 +104,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
-    protected void addFragment(int containerViewId, Fragment fragment, String tag) {
+    public void addFragment(int containerViewId, Fragment fragment, String tag) {
         try {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             if (!fragment.isAdded()) {
@@ -118,6 +119,44 @@ public abstract class BaseActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    public void switchFragment(int containerViewId, Fragment show, Fragment hide, String tag) {
+        try {
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            // 隐藏当前的fragment，add下一个到Activity中
+            if (!show.isAdded()) {
+                // 隐藏当前的fragment，add下一个到Activity中
+                transaction.hide(hide).add(containerViewId, show, tag);
+            } else {
+                // 隐藏当前的fragment，显示下一个
+                transaction.hide(hide).show(show);
+            }
+            transaction.addToBackStack(tag);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void replaceFragment(int containerViewId, Fragment show, String tag) {
+        try {
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            // 隐藏当前的fragment，add下一个到Activity中
+            if (!show.isAdded()) {
+                // 隐藏当前的fragment，add下一个到Activity中
+                transaction.add(containerViewId, show, tag);
+            } else {
+                // 隐藏当前的fragment，显示下一个
+                transaction.replace(containerViewId,show,tag);
+            }
+            transaction.addToBackStack(tag);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

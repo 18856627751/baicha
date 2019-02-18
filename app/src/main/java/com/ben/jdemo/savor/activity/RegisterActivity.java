@@ -1,17 +1,23 @@
 package com.ben.jdemo.savor.activity;
 
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.ben.jdemo.savor.R;
 import com.ben.jdemo.savor.base.BaseActivity;
-import com.ben.jdemo.savor.fragments.RegisterNumFra;
+import com.ben.jdemo.savor.bean.LoginInfoBean;
+import com.ben.jdemo.savor.constant.Parameter;
+import com.ben.jdemo.savor.db.SpUtil;
+import com.ben.jdemo.savor.mvp.presenters.RegisterPresenter;
 import com.ben.jdemo.savor.util.Interfaces.RegisterViewFinish;
-import com.ben.jdemo.savor.util.enumstyle.RegisterFraEnum;
 import com.ben.jdemo.savor.util.enumstyle.StatusBar;
+import com.ben.jdemo.savor.widget.RegisterProgress;
+import com.google.gson.Gson;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,11 +25,15 @@ import butterknife.ButterKnife;
 public class RegisterActivity extends BaseActivity implements RegisterViewFinish {
 
     long keyBack = 0;
-    RegisterFraEnum fraEnum;
 
     @BindView(R.id.bt_next_step)
     Button btNextStep;
-    private RegisterNumFra accountFra;
+    @BindView(R.id.rp_progress_tea)
+    RegisterProgress rpProgressTea;
+
+    private LoginInfoBean.DataBean data;
+    private RegisterPresenter presenter;
+
 
     @Override
     protected int getLayoutId() {
@@ -38,36 +48,30 @@ public class RegisterActivity extends BaseActivity implements RegisterViewFinish
     @Override
     protected void initial() {
         ButterKnife.bind(this);
-        Toast.makeText(this, "客官还没有账号，注册一个吧（>.<）", Toast.LENGTH_SHORT).show();
-
-        accountFra = new RegisterNumFra();
-        addFragment(R.id.fra_register_content,accountFra, "register");
-
-        fraEnum=RegisterFraEnum.ACCOUNT;
+        EventBus.getDefault().register(this);
+        presenter = new RegisterPresenter(this);
+        presenter.initFragment();
     }
 
     @Override
     protected void initDeal() {
-        btNextStep.setOnClickListener(v -> {
-            if(fraEnum==RegisterFraEnum.ACCOUNT){
-                accountFra.setOnClick();
-            }else if(fraEnum==RegisterFraEnum.FACE){
-
-            }else{
-
-            }
-        });
+        btNextStep.setOnClickListener(v -> presenter.setOnClick(v,rpProgressTea));
     }
 
     //注册进度条完全结束
     @Override
     public void finishView() {
-
+        presenter.addData(data);
+        //startActivity
     }
 
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyBack == 0) {
+            Toast.makeText(this, "双击退出", Toast.LENGTH_SHORT).show();
+            return true;
+        }
         if (System.currentTimeMillis() - keyBack > 1000) {
             keyBack = System.currentTimeMillis();
             return true;
@@ -75,10 +79,16 @@ public class RegisterActivity extends BaseActivity implements RegisterViewFinish
         return super.onKeyDown(keyCode, event);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void registerFras(LoginInfoBean.DataBean data) {
+        this.data = data;
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
 }

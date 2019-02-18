@@ -13,6 +13,7 @@ public class LoginInfoBean {
 
     private List<DataBean> list;
 
+    public LoginInfoBean(){}
     public LoginInfoBean(List<DataBean> list){
         this.list=list;
     }

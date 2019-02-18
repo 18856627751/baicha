@@ -13,11 +13,24 @@ import com.google.gson.Gson;
  */
 public class RegisterModel {
 
-    public void setAcountRegist(String account , String pass , RegisterAccountListener listener){
+    public void setAccountRegister(String account , String pass , RegisterAccountListener listener){
         if(listener==null){return;}
         if(account==null){listener.accountEmpty();return;}
         if(account.length()==0){listener.accountEmpty();return;}
         if(account.length()<=6){listener.accountLengthShort();return;}
+
+        String info = SpUtil.getInstance().getStringInfo(Parameter.LOGINKEY);
+        if(!info.equals(Parameter.ERROR)){
+            LoginInfoBean bean = new Gson().fromJson(info, LoginInfoBean.class);
+            for (LoginInfoBean.DataBean dataBean : bean.getList()) {
+                if (dataBean.getAcount().equals(account)){
+                    listener.accountExist();
+                    return;
+                }
+            }
+        }
+
+
         if(pass==null){listener.passEmpty();return;}
         if(pass.length()==0){listener.passEmpty();return;}
         if(pass.length()<=6){listener.passLengthShort();return;}

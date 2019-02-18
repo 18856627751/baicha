@@ -15,6 +15,8 @@ public interface RegisterAccountListener {
 
     void accountLengthShort();
 
+    void accountExist();
+
     void passLengthShort();
 
     void nextStep(LoginInfoBean.DataBean data);
